@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const plm = require("passport-local-mongoose");
 
 mongoose.connect("mongodb://localhost/pintrestClone");
 
@@ -21,17 +22,18 @@ const userSchema = new Schema({
   },
   posts: [
     {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Post",
     },
   ],
   dp: {
     type: String, // Assuming the display picture is stored as a URL
   },
-  fullName: {
+  fullname: {
     type: String,
   },
 });
 
+userSchema.plugin(plm);
 // Create the User model
 module.exports = mongoose.model("User", userSchema);
