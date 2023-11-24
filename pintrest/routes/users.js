@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const plm = require("passport-local-mongoose");
 
-mongoose.connect("mongodb://localhost/pintrestClone");
+mongoose.connect("mongodb://127.0.0.1:27017/clonePintrest");
 
 // Define the user schema
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -18,7 +18,6 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    required: true,
   },
   posts: [
     {
