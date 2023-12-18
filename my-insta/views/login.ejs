@@ -1,0 +1,21 @@
+<%include ./partials/header.ejs%>
+    <div class="login w-full min-h-screen bg-zinc-50 flex flex-wrap justify-center align-center">
+        <div class="w-[30vw] h-[60vh] bg-white mt-9 px-20 py-10 border-2">
+            <h1 class="instagram text-5xl text-zinc-700 text-center cursor-default tracking-tight">Instagram</h1>
+            <hr class="w-80 mt-6 border-zinc-300" />
+
+            <form action="/login" method="post" class="flex flex-wrap align-center justify-center">
+                <input type="text" name="username" placeholder="Username"
+                    class="w-80% text-xl text-zinc-500 px-5 py-1 mt-3 font-sans border-2 border-zinc-300 rounded-md" />
+                <input type="password" name="password" placeholder="Password"
+                    class="w-80% text-xl text-zinc-500 px-5 py-1 mt-3 font-sans border-2 border-zinc-300 rounded-md" />
+
+                <input class='block w-[270px] py-2 mt-4 bg-blue-600 font-sans text-white rounded-md' type="submit"
+                    name="submit" value="Login">
+            </form>
+            <p class="mt-8 text-md text-zinc-500 text-center font-sans text-wrap leading-tights">Don't have an account?
+                <a href="/" class="text-black font-semibold font-sans">Register</a>
+            </p>
+        </div>
+    </div>
+    <%include ./partials/footer.ejs%>

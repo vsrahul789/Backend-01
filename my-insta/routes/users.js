@@ -1,9 +1,25 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const plm = require("passport-local-mongoose");
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+mongoose.connect("mongodb://localhost:27017/my-insta");
+
+const userSchema = new mongoose.Schema({
+  username: String,
+  fullname: String,
+  age: Number,
+  email: String,
+  password: String,
+  posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "post" }],
+  friends: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }],
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "post" }],
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "comment" }],
+  bio: { type: String, default: "" },
 });
 
-module.exports = router;
+userSchema.plugin(plm);
+
+module.exports = mongoose.model("user", userSchema);
